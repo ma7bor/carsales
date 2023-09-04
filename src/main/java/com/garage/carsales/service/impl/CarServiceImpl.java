@@ -30,9 +30,9 @@ public class CarServiceImpl implements CarService {
 
     @Override
     @Transactional
-    public String addCar(CarDto carDto) {
-        if (carDto.getRegistrationDate().isAfter(LocalDate.of(2015, 12, 31))) {
-            carRepository.save(carMapper.mapToEntity(carDto));
+    public String addCar(Car car) {
+        if (car.getRegistrationDate().isAfter(LocalDate.of(2015, 12, 31))) {
+            carRepository.save(car);
             return "Car added with success";
         } else {
             throw new RegistrationDateException("Only car registered after 2015 are allowed to be add to the catalog");

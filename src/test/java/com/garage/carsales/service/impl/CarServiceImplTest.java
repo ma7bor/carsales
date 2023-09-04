@@ -8,8 +8,6 @@ import com.garage.carsales.exception.CarNotFoundException;
 import com.garage.carsales.exception.RegistrationDateException;
 import com.garage.carsales.mapper.CarMapper;
 import com.garage.carsales.repository.CarRepository;
-import com.garage.carsales.service.CarService;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -43,9 +41,9 @@ class CarServiceImplTest {
     @Test
     @Transactional
     void testAddCarSuccess() {
-        CarDto carDto = new CarDto();
-        carDto.setRegistrationDate(LocalDate.of(2022, 1, 1));
-        String result = carService.addCar(carDto);
+        Car car = new Car();
+        car.setRegistrationDate(LocalDate.of(2022, 1, 1));
+        String result = carService.addCar(car);
         assertEquals("Car added with success", result);
     }
 
@@ -97,7 +95,7 @@ class CarServiceImplTest {
 
     @Test
     void testAddCarRegistrationDateException() {
-        CarDto carToAdd = new CarDto("make", "model",
+        Car carToAdd = new Car(1L,"make", "model",
                 LocalDate.of(2014, Month.DECEMBER, 31),
                 0d, FuelType.DIESEL, 0, TransmissionType.MANUAL, "pictureUrl");
 

@@ -1,6 +1,7 @@
 package com.garage.carsales.service;
 
 import com.garage.carsales.dto.CarDto;
+import com.garage.carsales.entity.Car;
 import com.garage.carsales.enums.FuelType;
 import org.springframework.stereotype.Service;
 
@@ -8,7 +9,7 @@ import java.util.List;
 
 @Service
 public interface CarService {
-    String addCar(CarDto carDto);
+    String addCar(Car car);
 
     List<CarDto> getCarsByFuelTypeAndPrice(FuelType fuelType, double maxPrice);
 
